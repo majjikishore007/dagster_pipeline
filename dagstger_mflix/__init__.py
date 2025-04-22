@@ -1,9 +1,11 @@
 from dagster import Definitions, load_assets_from_modules
 
-from . import assets
+from .assets import mongodb
+from dagster_embedded_elt.dlt import DagsterDltResource
 
-all_assets = load_assets_from_modules([assets])
+monogdb_assets = load_assets_from_modules([mongodb])
 
 defs = Definitions(
-    assets=all_assets,
+    assets=[*monogdb_assets],
+    resources={"dlt": DagsterDltResource()},
 )
