@@ -21,7 +21,6 @@ mflix = mongodb(
         dataset_name="mflix",
     ),
     name="mongodb",
-    group_name="mongodb",
 )
 def dlt_asset_factory(context: AssetExecutionContext, dlt: DagsterDltResource):
     yield from dlt.run(context=context, write_disposition="merge")
