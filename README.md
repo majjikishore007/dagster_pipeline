@@ -1,47 +1,68 @@
-# dagstger_mflix
+# Dagster Mflix Demo
 
-This is a [Dagster](https://dagster.io/) project scaffolded with [`dagster project scaffold`](https://docs.dagster.io/getting-started/create-new-project).
+This is a ETL pipeline built using Dagster and the Mflix dataset. The goal of this project is to demonstrate how to use Dagster to build a data pipeline that ingests data from MongoDB and loads it into Snowflake.
 
-## Getting started
 
-First, install your Dagster code location as a Python package. By using the --editable flag, pip will install your Python package in ["editable mode"](https://pip.pypa.io/en/latest/topics/local-project-installs/#editable-installs) so that as you develop, local code changes will automatically apply.
+## Features
 
-```bash
-pip install -e ".[dev]"
+- Asset based, declarative orchestration
+- Embedded ELT using data load tool
+- How to backfill DAGs using Partitions
+- How to setup Schedules and Jobs
+- Experimental features: Sensors and Auto Materialization policies
+
+
+
+## System Architecture
+
+At a high level, the system architecture is a pipeline that ingests  OLTP data from MongoDB and loads it into Snowflake warehouse(OLAP) for analytics. This flow is oarchestrated using Dagster.
+
+![img/system-architecture.png](public/architecture.png)
+
+
+## Configuration and Local Setup
+
+### Mongodb setup with sample data
+Sign up for MongoDB Atlas and select the sample mflix dataset: https://www.mongodb.com/docs/atlas/sample-data/#std-label-load-sample-data
+![img/mongodb.png](public/mongodb.png)
+
+### Snowflake Signup and setup
+Sign up for Snowflake and create a warehouse, database and role. You can use the free trial credits to get started. Follow the instructions here: https://docs.snowflake.com/en/user-guide/admin-setup.html
+-  Run the following commands in the Snowflake UI to create the warehouse, database and role. You can also use the Snowflake CLI to run these commands.
+```sql
+use role accountadmin;
+
+create warehouse if not exists dagster_wh with warehouse_size='x-small';
+create database if not exists dagster_db;
+create role if not exists dagster_role;
+
+grant usage on warehouse dagster_wh to role dagster_role;
+grant role dagster_role to user username;
+grant all on database dagster_db to role dagster_role;
 ```
 
-Then, start the Dagster UI web server:
-
+## Setting up Project
+- clone the repo
+- cd into the repo
+- create a virtual environment and install the requirements
+        
 ```bash
-dagster dev
+    python3 -m venv .venv
+    source .venv/bin/activate
+    pip install -e".[dev]"
 ```
 
-Open http://localhost:3000 with your browser to see the project.
+- cp `.env.example` to `.env` and update the following variables
+and setup the credentials for your MongoDB and Snowflake instances.
 
-You can start writing assets in `dagstger_mflix/assets.py`. The assets are automatically loaded into the Dagster code location as you define them.
-
-## Development
-
-### Adding new Python dependencies
-
-You can specify new Python dependencies in `setup.py`.
-
-### Unit testing
-
-Tests are in the `dagstger_mflix_tests` directory and you can run tests using `pytest`:
+- Now you can run the dagster UI using the following command:
 
 ```bash
-pytest dagstger_mflix_tests
+    dagster dev
 ```
 
-### Schedules and sensors
+- navigate to `localhost:3000` to see the Dagster UI. You should see the following screen:
 
-If you want to enable Dagster [Schedules](https://docs.dagster.io/concepts/partitions-schedules-sensors/schedules) or [Sensors](https://docs.dagster.io/concepts/partitions-schedules-sensors/sensors) for your jobs, the [Dagster Daemon](https://docs.dagster.io/deployment/dagster-daemon) process must be running. This is done automatically when you run `dagster dev`.
 
-Once your Dagster Daemon is running, you can start turning on schedules and sensors for your jobs.
+That's it ! You are now ready to run the Dagster pipeline. happy data engineering!
 
-## Deploy on Dagster Cloud
-
-The easiest way to deploy your Dagster project is to use Dagster Cloud.
-
-Check out the [Dagster Cloud Documentation](https://docs.dagster.cloud) to learn more.
