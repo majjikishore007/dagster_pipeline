@@ -1,4 +1,4 @@
-# Dagster Mflix Demo
+# DagsterMflix
 
 This is a ETL pipeline built using Dagster and the Mflix dataset. The goal of this project is to demonstrate how to use Dagster to build a data pipeline that ingests data from MongoDB and loads it into Snowflake.
 
