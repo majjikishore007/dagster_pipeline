@@ -1,14 +1,12 @@
 # In schedules.py
-import datetime
-from dagster import schedule, RunRequest, DagsterRunStatus
+from dagster import schedule, RunRequest
 from ..jobs import movies_job
 from ..partitions import monthly_partition # Import your partition definition
 
 @schedule(
     cron_schedule="* * * * *", # Or "0 0 1 * *" for monthly
     job=movies_job,
-    # Optional: Default status if the schedule fails to yield a RunRequest
-    # default_status=DagsterRunStatus.STARTED
+   
 )
 def movies_manual_schedule(context):
     """
