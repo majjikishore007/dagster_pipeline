@@ -1,0 +1,24 @@
+TITLE,MOVIES.RELEASED :: DATE,IMDB__RATING,IMDB__VOTES,GENRES,partition_date
+Rise of the Planet of the Apes,2011-08-05,7.6,370410,Action,2011-08-01
+Hindsight,2011-08-31,6.4,777,Romance,2011-08-01
+Don't Be Afraid of the Dark,2011-08-26,5.6,38827,Horror,2011-08-01
+War of the Arrows,2011-08-10,7.2,7815,History,2011-08-01
+Dos,2011-09-01,5.8,260,Fantasy,2011-08-01
+Mankatha,2011-08-31,7.5,7581,Crime,2011-08-01
+Mankatha,2011-08-31,7.5,7581,Thriller,2011-08-01
+30 Minutes or Less,2011-08-12,6.2,73352,Comedy,2011-08-01
+Phineas and Ferb the Movie: Across the 2nd Dimension,2011-08-05,7.6,3794,Animation,2011-08-01
+Phineas and Ferb the Movie: Across the 2nd Dimension,2011-08-05,7.6,3794,Adventure,2011-08-01
+Rise of the Planet of the Apes,2011-08-05,7.6,370410,Sci-Fi,2011-08-01
+Rise of the Planet of the Apes,2011-08-05,7.6,370410,Drama,2011-08-01
+Exodus: Gods and Kings,2014-12-12,6.1,104597,Biography,2014-12-01
+Song of the Sea,2014-12-10,8.2,14885,Animation,2014-12-01
+The Hobbit: The Battle of the Five Armies,2014-12-17,7.5,288968,Adventure,2014-12-01
+Saphirblau,2014-12-18,6.5,1114,Mystery,2014-12-01
+Into the Woods,2014-12-25,6.0,82172,Musical,2014-12-01
+Song of the Sea,2014-12-10,8.2,14885,Fantasy,2014-12-01
+Song of the Sea,2014-12-10,8.2,14885,Family,2014-12-01
+Son of a Gun,2014-12-11,6.5,14222,Drama,2014-12-01
+Son of a Gun,2014-12-11,6.5,14222,Crime,2014-12-01
+The Interview,2014-12-24,6.7,217029,Comedy,2014-12-01
+The Interview,2014-12-24,6.7,217029,Action,2014-12-01
